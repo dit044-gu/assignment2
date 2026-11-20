@@ -43,3 +43,5 @@ public class DrawPanel extends JPanel {
         g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
     }
 }
+
+//This is is test comment to push
