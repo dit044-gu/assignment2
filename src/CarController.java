@@ -19,7 +19,7 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // TODO A list of cars, modify if needed
-    ArrayList<Car> cars = new ArrayList<>();
+    ArrayList<Vehicle> cars = new ArrayList<>();
 
     public void startTimer() {
         this.timer.start();
