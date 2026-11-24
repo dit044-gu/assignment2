@@ -1,0 +1,173 @@
+import java.awt.*;
+
+public abstract class Car implements Movable {
+    private int nrDoors;
+    private double enginePower;
+    private double currentSpeed;
+    private Color color;
+    private String modelName;
+    private double x;
+    private double y;
+    private int direction; // 0 forward, 1 right, 2 down, 3 left
+
+    public Car(int nrDoors, double enginePower, Color color, String modelName) {
+        this.nrDoors = nrDoors;
+        this.enginePower = enginePower;
+        this.color = color;
+        this.modelName = modelName;
+        this.currentSpeed = 0;
+    }
+
+    public int getNrDoors() {
+        return nrDoors;
+    }
+
+    public double getEnginePower() {
+        return enginePower;
+    }
+
+    public double getCurrentSpeed() {
+        return currentSpeed;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public Point getPosition() {
+        return new Point((int) x, (int) y);
+    }
+
+    public void startEngine() {
+        currentSpeed = 0.1;
+    }
+
+    public void stopEngine() {
+        currentSpeed = 0;
+    }
+
+    public void gas(double amount) {
+        if (amount < 0 || amount > 1) {
+            return;
+        }
+        incrementSpeed(amount);
+    }
+
+    public void brake(double amount) {
+        if (amount < 0 || amount > 1) {
+            return;
+        }
+        decrementSpeed(amount);
+    }
+
+    public void incrementSpeed(double amount) {
+        double newSpeed = currentSpeed + speedFactor() * amount;
+        if (newSpeed > enginePower) {
+            newSpeed = enginePower;
+        }
+        currentSpeed = newSpeed;
+    }
+
+    public void decrementSpeed(double amount) {
+        double newSpeed = currentSpeed - speedFactor() * amount;
+        if (newSpeed < 0) {
+            newSpeed = 0;
+        }
+            currentSpeed = newSpeed;   
+    }
+
+    public abstract double speedFactor();
+
+    public void checkBounds(int frameWidth, int frameHeight) {
+        if (getX() < 0) {
+            setX(0);
+            stopEngine();
+            turnRight();
+            turnRight();
+            startEngine();
+        } 
+        
+        if (getX() > frameWidth) {
+            setX(frameWidth);
+            stopEngine();
+            turnRight();
+            turnRight();
+            startEngine();
+        }
+
+        if (getY() < 0) {
+            setY(0);
+            stopEngine();
+            turnRight();
+            turnRight();
+            startEngine();
+        } 
+        
+        if (getY() > frameHeight) {
+            setY(frameHeight);
+            stopEngine();
+            turnRight();
+            turnRight();
+            startEngine();
+        }
+    }
+
+   @Override
+    public void move() {
+        if (direction == 0) {
+            y += currentSpeed;
+        } else if (direction == 1) {
+            x += currentSpeed;
+        } else if (direction == 2) {
+            y -= currentSpeed;
+        } else if (direction == 3) {
+            x -= currentSpeed;
+        }
+    }
+
+    @Override
+    public void turnLeft() {
+        if (direction == 0) {
+            direction = 3;
+        } else if (direction == 1) {
+            direction = 0;
+        } else if (direction == 2) {
+            direction = 1;
+        } else if (direction == 3) {
+            direction = 2;
+        }
+    }
+
+    @Override
+    public void turnRight() {
+        if (direction == 0) {
+            direction = 1;
+        } else if (direction == 1) {
+            direction = 2;
+        } else if (direction == 2) {
+            direction = 3;
+        } else if (direction == 3) {
+            direction = 0;
+        }
+    }
+}

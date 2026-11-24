@@ -30,26 +30,76 @@ public class CarController {
      */
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            /*
             for (Car car : cars) {
                 car.move();
+                car.checkBounds(CarView.X, CarView.Y - 240);
                 int x = (int) Math.round(car.getPosition().getX());
                 int y = (int) Math.round(car.getPosition().getY());
-                frame.drawPanel.moveit(x, y);
+
+                if (car instanceof Volvo240) {
+                    frame.drawPanel.moveVolvo(x, y);
+                } else if (car instanceof Saab95) {
+                    frame.drawPanel.moveSaab(x, y);
+                }
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.revalidate();
                 frame.drawPanel.repaint();
             }
-             */
+             
         }
     }
 
     void gas(int amount) {
-        /* TODO adapt to your needs
         double gas = ((double) amount) / 100;
         for (Car car : cars) {
             car.gas(gas);
         }
-        */
+    }
+
+    void brake(int amount) {
+        double brake = ((double) amount) / 100;
+        for (Car car : cars) {
+            car.brake(brake);
+        }
+    }
+
+    void startAllCars() {
+        for (Car car : cars) {
+            car.startEngine();
+        }
+    }
+
+    void stopAllCars() {
+        for (Car car : cars) {
+            car.stopEngine();
+        }
+    }
+
+    void turnLeft() {
+        for (Car car : cars) {
+            car.turnLeft();
+        }
+    }
+
+    void turnRight() {
+        for (Car car : cars) {
+            car.turnRight();
+        }
+    }
+    
+    void setSaabTurboOn() {
+        for (Car car : cars) {
+            if (car instanceof Saab95) {
+                ((Saab95) car).setTurboOn();
+            }
+        }
+    }
+
+    void setSaabTurboOff() {
+        for (Car car : cars) {
+            if (car instanceof Saab95) {
+                ((Saab95) car).setTurboOff();
+            }
+        }
     }
 }

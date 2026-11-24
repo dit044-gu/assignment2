@@ -9,13 +9,20 @@ import javax.swing.*;
 public class DrawPanel extends JPanel {
     // Just a single image, TODO: Generalize
     BufferedImage volvoImage;
+    BufferedImage saabImage;
     // To keep track of a single car's position
     Point volvoPoint = new Point();
+    Point saabPoint = new Point();
 
     // TODO: Make this general for all cars
-    void moveit(int x, int y) {
+    public void moveVolvo(int x, int y) {
         volvoPoint.x = x;
         volvoPoint.y = y;
+    }
+
+    public void moveSaab(int x, int y) {
+        saabPoint.x = x;
+        saabPoint.y = y;
     }
 
     // Initializes the panel and reads the images
@@ -28,9 +35,19 @@ public class DrawPanel extends JPanel {
             // You can remove the "pics" part if running outside of IntelliJ and
             // everything is in the same folder.
             // volvoImage = ImageIO.read(new File("Volvo240.jpg"));
+            System.out.println(
+            "Volvo resource: " + DrawPanel.class.getResource("pics/Volvo240.jpg")
+            );
+            System.out.println(
+            "Saab resource: " + DrawPanel.class.getResource("pics/Saab95.jpg")
+            );
             volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
-        } catch (IOException ex)
-        {
+            saabImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Saab95.jpg"));
+
+            System.out.println("Volvo loaded: " + (volvoImage != null));
+            System.out.println("Saab loaded: " + (saabImage != null));
+
+        } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
@@ -41,5 +58,6 @@ public class DrawPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
+        g.drawImage(saabImage, saabPoint.x, saabPoint.y, null);
     }
 }
