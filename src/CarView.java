@@ -159,10 +159,17 @@ public class CarView extends JFrame {
         leftButton.addActionListener(e -> {
             carC.turnLeft();
         });
-
+//change:
         rightButton.addActionListener(e -> {
             carC.turnRight();
         });
+        turboOnButton.addActionListener(e -> {
+            carC.turboOn();
+        });
+
+        turboOffButton.addActionListener(e -> {
+            carC.turboOff();
+        });//change: when the button clicks, this connects to turbo function
 
         // Make the panel layout more compact
         this.pack();

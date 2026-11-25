@@ -52,12 +52,20 @@ public class CarController {
 
             for (Vehicle car : cars) {
 
+                double previousX = car.getX();
+                double previousY = car.getY();
+
                 car.move();
 
                 if (isOutsidePanel(car)) {
+                    car.stopEngine();
+
+                    car.setPosition(previousX, previousY);
+
                     car.turnLeft();
                     car.turnLeft();
-                    car.move();
+
+                    car.startEngine();
                 }
 
                 int x = (int) Math.round(car.getX());
@@ -69,7 +77,7 @@ public class CarController {
             frame.drawPanel.repaint();
         }
     }
-    //CHANGE: here we are saying that if it collides then move left
+    //CHANGE: here we are saying that if it collides then stop and then turn left twice and then start
 
     private boolean isOutsidePanel(Vehicle car) {
 
@@ -133,5 +141,22 @@ public class CarController {
         for (Vehicle car : cars) {
             car.turnRight(); //change: the same with turnright and turnleft
         }
-    }}
+    }
+    void turboOn() {
+    for (Vehicle car : cars) {
+        if (car instanceof Saab95) {
+            Saab95 saab = (Saab95) car;
+            saab.setTurboOn();
+        }
+    }
+}
+
+    void turboOff() {
+    for (Vehicle car : cars) {
+        if (car instanceof Saab95) {
+            Saab95 saab = (Saab95) car;
+            saab.setTurboOff();
+        }
+    }
+}}//change: connecting saab turbo buttons
 

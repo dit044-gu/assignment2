@@ -9,6 +9,7 @@ void main() {
     Vehicle volvo = new Volvo240();
     Vehicle saab = new Saab95();
 
+    volvo.setPosition(0, 0);
     saab.setPosition(0, 100);
 
     cc.cars.add(volvo);
