@@ -25,7 +25,7 @@ public class DrawPanel extends JPanel {
             saabPoint.x = x;
             saabPoint.y = y;
         }
-    }//CHANGE:
+    }//CHANGE: changing Saab's picture position too
 
     // Initializes the panel and reads the images
     public DrawPanel(int x, int y) {
@@ -65,5 +65,4 @@ public class DrawPanel extends JPanel {
                 null
         );
     }}
-
-//This is is test comment to push
+//We are drawing Saab's picture as well

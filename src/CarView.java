@@ -141,6 +141,8 @@ public class CarView extends JFrame {
         stopButton.setPreferredSize(new Dimension(X/5-15,200));
         this.add(stopButton);
 
+
+        //CHANGE:
         // This actionListener is for the gas button only
         //We are creating buttons here
         gasButton.addActionListener(e -> {
@@ -159,7 +161,7 @@ public class CarView extends JFrame {
         leftButton.addActionListener(e -> {
             carC.turnLeft();
         });
-//change:
+
         rightButton.addActionListener(e -> {
             carC.turnRight();
         });

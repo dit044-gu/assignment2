@@ -7,10 +7,10 @@ void main() {
 
 
     Vehicle volvo = new Volvo240();
-    Vehicle saab = new Saab95();
+    Vehicle saab = new Saab95();//CHANGE: I am creating a Saab
 
     volvo.setPosition(0, 0);
-    saab.setPosition(0, 100);
+    saab.setPosition(0, 100);//CHANGE: I gave cars different positions
 
     cc.cars.add(volvo);
     cc.cars.add(saab);//CHANGE: I HAVE ADDED SAAB95 TO THE LIST

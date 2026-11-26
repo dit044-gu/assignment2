@@ -56,7 +56,7 @@ public abstract class Vehicle implements Movable{
         this.x=x;
         this.y=y;
     }
-
+//This method changes the position of the car.
 
     public String getModelName() {
         return modelName;

@@ -103,7 +103,7 @@ public class CarController {
                 || car.getX() > maxX
                 || car.getY() < 0
                 || car.getY() > maxY;
-    }//CHANGE: we are checking if boundaries were in conatct with the car object.return true.
+    }//CHANGE: we are checking if boundaries were in contact with the car object.return true.
 
     void gas(int amount) {
 
