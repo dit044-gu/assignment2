@@ -8,6 +8,4 @@ void main() {
     // Start a new view and send a reference to the controller
     cc.frame = new CarView("CarSim 1.0", cc);
     cc.startTimer();
-// THIS MEESAGE IS A TEST. DELETE AFTER READING IT.
-    // this is another one.
 }

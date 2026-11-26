@@ -2,6 +2,7 @@
 import java.awt.*;
 
 // CLASS DEFINITION:
+//Vehicle contains the actual car behaviour.
 public abstract class Vehicle implements Movable{
 //--------------------------------------------------------------------
 
@@ -45,6 +46,17 @@ public abstract class Vehicle implements Movable{
     public double getCurrentSpeed() {
         return currentSpeed;
     }
+
+    public double getX() {return x;}//CHANGE: WE CREATED GET X, BCZ CARCONTROLLER ASKS FOR GETX AND Y
+    //BCZ OUR CURRENT X WAS PRIVATE WHICH WAS NOT ACCESSIBLE.
+
+    public double getY() {return y;}//CHANGE:
+
+    public void setPosition(double x, double y) {
+        this.x=x;
+        this.y=y;
+    }
+//This method changes the position of the car.
 
     public String getModelName() {
         return modelName;
