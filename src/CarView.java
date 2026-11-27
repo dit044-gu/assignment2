@@ -15,13 +15,13 @@ import java.awt.event.ActionListener;
 
 public class CarView extends JFrame {
     public static final int X = 800;
-    public static final int Y = 800;
+    public static final int Y = 600;
 
     // The controller member
     CarController carC;
 
-    DrawPanel drawPanel = new DrawPanel(X, Y-240);
-
+    //DrawPanel drawPanel = new DrawPanel(X, Y-240);
+    DrawPanel drawPanel;
     JPanel controlPanel = new JPanel();
 
     JPanel gasPanel = new JPanel();
@@ -41,6 +41,7 @@ public class CarView extends JFrame {
 
     // Constructor
     public CarView(String framename, CarController cc) {
+        this.drawPanel = new DrawPanel(X, Y - 240, cc);
         this.carC = cc;
         initComponents(framename);
     }
@@ -72,9 +73,9 @@ public class CarView extends JFrame {
 
         controlPanel.setLayout(new GridLayout(2,4));
 
-        controlPanel.add(gasButton, 0);
+        controlPanel.add(gasButton, 0); //done
         controlPanel.add(turboOnButton, 1);
-        controlPanel.add(brakeButton, 2);
+        controlPanel.add(brakeButton, 2); //done
         controlPanel.add(turboOffButton, 3);
         controlPanel.add(leftButton, 4);
         controlPanel.add(rightButton, 5);
@@ -98,6 +99,43 @@ public class CarView extends JFrame {
         gasButton.addActionListener(e -> {
             carC.gas(gasAmount);
         });
+
+        brakeButton.addActionListener(e -> {
+            carC.brake(gasAmount);
+        });
+
+        leftButton.addActionListener(e -> {
+            carC.turnLeft();
+        });
+        rightButton.addActionListener(e -> {
+            carC.turnRight();
+        });
+
+        turboOffButton.addActionListener(e -> {
+            carC.saabturboOff();
+        });
+
+        turboOnButton.addActionListener(e -> {
+            carC.saabturboOn();
+        });
+
+        startButton.addActionListener(e -> {
+            carC.startTimer();
+        });
+
+        stopButton.addActionListener(e -> {
+            carC.stopTimer();
+        });
+
+
+
+
+
+
+
+
+
+
 
         // Make the panel layout more compact
         this.pack();
