@@ -103,13 +103,13 @@ public abstract class Car implements Movable {
     @Override
     public void move(){
         if (direction==0){
-            y+=currentSpeed;}
+            y-=currentSpeed;}
 
         else if (direction==1){
             x+=currentSpeed;
         }
         else if (direction==2){
-            y-=currentSpeed;
+            y+=currentSpeed;
         }
         else if (direction==3){
             x-=currentSpeed;
